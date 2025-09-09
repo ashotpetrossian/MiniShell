@@ -1,0 +1,9 @@
+# Build directories
+bin/
+obj/
+
+# Temporary files
+*.o
+*.exe
+*.log
+*.tmp
