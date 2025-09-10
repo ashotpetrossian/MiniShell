@@ -13,7 +13,7 @@ struct PathPrefix
     std::string rest;      // remaining path
 };
 
-inline PathPrefix validatePath(const std::string& path)
+[[nodiscard]] inline PathPrefix validatePath(const std::string& path)
 {
     PathPrefix result;
     size_t pos{};
@@ -65,7 +65,7 @@ inline PathPrefix validatePath(const std::string& path)
     return result;
 }
 
-inline std::vector<std::string> split(const std::string& path)
+[[nodiscard]] inline std::vector<std::string> split(const std::string& path)
 {
     std::stringstream ss{path};
     std::string s;
@@ -80,7 +80,7 @@ inline std::vector<std::string> split(const std::string& path)
 
 struct KMPSolver
 {
-    inline static bool solve(const std::string& text, const std::string& pattern)
+    [[nodiscard]] inline static bool solve(const std::string& text, const std::string& pattern)
     {
         std::size_t patternSize = pattern.size();
         std::vector<int> lps(patternSize);

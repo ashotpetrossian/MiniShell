@@ -19,12 +19,12 @@ public:
     /// @brief Parses the user input into a list of command and arguments.
     /// @param input The entire input string entered by the user.
     /// @return A vector of strings, where the first element is the command and the rest are arguments.
-    std::vector<std::string> parse(const std::string& input);   
+    std::vector<std::string> parse(const std::string& input) const;   
 
     /// @brief Creates a command object based on the command name.
     /// @param name The name of the command.
     /// @return A unique_ptr to the corresponding Command object, or nullptr if the command does not exist.
-    std::unique_ptr<Command> createCommand(const std::string& name); 
+    std::unique_ptr<Command> createCommand(const std::string& name) const; 
 
 private:
     /// @brief Stores command name to factory function mapping.

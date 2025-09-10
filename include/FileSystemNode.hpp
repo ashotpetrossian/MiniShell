@@ -18,8 +18,6 @@ class Directory;
  * Design:
  * - Each node keeps a weak pointer to its parent directory to avoid 
  *   circular ownership.
- * - Each node stores a last-modified timestamp, which is updated 
- *   whenever modifications occur.
  *
  * Inheritance:
  * - @see File for concrete file nodes.
@@ -30,8 +28,6 @@ class FileSystemNode
 protected:
     /// Weak pointer to parent directory (avoids cyclic references).
     std::weak_ptr<Directory> parent{};
-    /// Last modification timestamp.
-    std::chrono::system_clock::time_point lastModifiedTime;
 
 public:
     /**
@@ -40,12 +36,6 @@ public:
      */
     void setParent(std::shared_ptr<Directory> p) { parent = p; }
 
-    /**
-     * @brief Retrieves the last modified timestamp of this node.
-     * @return The time point representing the last modification.
-     */
-    std::chrono::system_clock::time_point lastModified() const { return lastModifiedTime; }
-    
     /**
      * @brief Gets the size of the node.
      * 
@@ -72,10 +62,10 @@ public:
      * @brief Checks if this node is a directory.
      * @return True if it is a directory, false if it is a file.
      */
-    virtual bool isDirectory() const = 0;
+    virtual bool isDirectory() const noexcept = 0;
 
     /**
      * @brief Virtual destructor for safe polymorphic deletion.
      */
-    virtual ~FileSystemNode() = default;
+    virtual ~FileSystemNode() = default; // implicitly noexcept
 };

@@ -85,7 +85,7 @@ public:
      * @brief Checks if this node is a directory.
      * @return Always true for Directory.
      */
-    virtual bool isDirectory() const override { return true; }
+    virtual bool isDirectory() const noexcept override { return true; }
 
 private:
     /**
@@ -98,7 +98,7 @@ private:
      * @brief Removes a child node from this directory.
      * @param name Name of the child to remove.
      */
-    void removeChild(const std::string& name);
+    void removeChild(const std::string& name) noexcept;
 
 private:
     /// Map of child names to their corresponding nodes (files or directories).

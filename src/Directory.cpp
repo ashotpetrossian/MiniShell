@@ -76,7 +76,7 @@ void Directory::rmFile(const std::string& name)
     removeChild(name);
 }
 
-void Directory::removeChild(const std::string& name)
+void Directory::removeChild(const std::string& name) noexcept
 {
     children.erase(name);
 }

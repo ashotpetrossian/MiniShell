@@ -92,7 +92,7 @@ void FileSystemManager::cp(const std::string& srcPath, const std::string& dstPat
     }
 }
 
-void FileSystemManager::copyDirectory(std::shared_ptr<Directory> srcNode, std::shared_ptr<Directory> dstNode)
+void FileSystemManager::copyDirectory(const std::shared_ptr<Directory>& srcNode, const std::shared_ptr<Directory>& dstNode)
 {
     auto newDir = std::make_shared<Directory>(srcNode->getName());
     dstNode->children[newDir->getName()] = newDir;
@@ -282,7 +282,7 @@ std::optional<std::vector<std::string>> FileSystemManager::grep(const std::strin
     return res;
 }
 
-void FileSystemManager::dfsAndGrep(std::shared_ptr<Directory> node, const std::string& pattern, std::vector<std::string>& path, std::vector<std::string>& res) const
+void FileSystemManager::dfsAndGrep(const std::shared_ptr<Directory>& node, const std::string& pattern, std::vector<std::string>& path, std::vector<std::string>& res) const
 {
     path.push_back(node->getName());
 

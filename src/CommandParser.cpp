@@ -1,6 +1,6 @@
 #include "../include/CommandParser.hpp"
 
-std::vector<std::string> CommandParser::parse(const std::string& input)
+std::vector<std::string> CommandParser::parse(const std::string& input) const
 {
     std::stringstream ss{input};
     std::string s;
@@ -13,9 +13,9 @@ std::vector<std::string> CommandParser::parse(const std::string& input)
     return res;
 }
 
-std::unique_ptr<Command> CommandParser::createCommand(const std::string& name)
+std::unique_ptr<Command> CommandParser::createCommand(const std::string& name) const
 {
-    return registry.contains(name) ? registry[name]() : nullptr;
+    return registry.contains(name) ? registry.at(name)() : nullptr;
 }
 
 CommandParser::CommandParser()

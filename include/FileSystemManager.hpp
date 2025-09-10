@@ -24,7 +24,7 @@ private:
      * @param src Source directory to copy from.
      * @param dst Destination directory to copy into.
      */
-    void copyDirectory(std::shared_ptr<Directory> src, std::shared_ptr<Directory> dst);
+    void copyDirectory(const std::shared_ptr<Directory>& src, const std::shared_ptr<Directory> &dst);
 
     /**
      * @brief Resolves the source path for copy or move operations.
@@ -64,7 +64,7 @@ private:
      * @param path Current path vector.
      * @param res Vector to store matching paths.
      */
-    void dfsAndGrep(std::shared_ptr<Directory> node, const std::string& pattern, std::vector<std::string>& path, std::vector<std::string>& res) const;
+    void dfsAndGrep(const std::shared_ptr<Directory>& node, const std::string& pattern, std::vector<std::string>& path, std::vector<std::string>& res) const;
 
     /**
      * @brief Safely casts a FileSystemNode to the specified derived type.

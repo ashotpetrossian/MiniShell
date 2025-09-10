@@ -23,7 +23,7 @@ public:
      * @brief Gets the size of the file in bytes.
      * @return Size of the file content.
      */
-    virtual std::size_t getSize() const override { return fileContent.size(); }
+    virtual std::size_t getSize() const noexcept override { return fileContent.size(); }
 
     /**
      * @brief Gets the file name.
@@ -60,7 +60,7 @@ public:
      * @brief Checks if this node is a directory.
      * @return Always false for files.
      */
-    virtual bool isDirectory() const override { return false; }
+    virtual bool isDirectory() const noexcept override { return false; }
 
 private:
     std::string fileName;     ///< Name of the file
